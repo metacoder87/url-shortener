@@ -13,4 +13,12 @@ class ShortenedUrl < ApplicationRecord
             return rando unless ShortenedUrl.exists?(short_url: rando)
         end
     end
+
+    def self.create_shortened_url(user, long_url)
+        ShortenedUrl.create!(
+            short_url: ShortenedUrl.random_code,
+            long_url: long_url,
+            submitter: user.id
+        )
+    end
 end
