@@ -10,7 +10,7 @@ class ShortenedUrl < ApplicationRecord
     def self.random_code
         loop do
             rando = SecureRandom.urlsafe_base64(16)
-            return rando unless ApplicationRecord.exists?(short_url: rando)
+            return rando unless ShortenedUrl.exists?(short_url: rando)
         end
     end
 end
