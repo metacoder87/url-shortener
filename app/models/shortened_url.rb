@@ -18,7 +18,7 @@ class ShortenedUrl < ApplicationRecord
         ShortenedUrl.create!(
             short_url: ShortenedUrl.random_code,
             long_url: long_url,
-            submitter: user.id
+            submitter_id: user.id
         )
     end
 end
