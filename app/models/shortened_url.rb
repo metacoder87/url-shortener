@@ -11,6 +11,7 @@ class ShortenedUrl < ApplicationRecord
         primary_key: :id,
         class_name: :Visit,
         foreign_key: :shortened_url_id
+        dependent: :destroy
 
     has_many :visitors,
         -> { distinct },
