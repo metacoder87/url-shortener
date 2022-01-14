@@ -30,4 +30,9 @@ class ShortenedUrl < ApplicationRecord
             submitter_id: user.id
         )
     end
+
+    def num_clicks
+        visits.count
+    end
+
 end
