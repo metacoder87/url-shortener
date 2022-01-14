@@ -13,7 +13,7 @@ class ShortenedUrl < ApplicationRecord
         foreign_key: :shortened_url_id
 
     has_many :visitors,
-        Proc.new { distinct },
+        -> { distinct },
         through: :visits,
         source: :visitor
 
@@ -37,7 +37,7 @@ class ShortenedUrl < ApplicationRecord
     end
 
     def num_uniques
-        visits.select('user_id').distinct.count
+        visitors.count
     end
 
     def num_recent_uniques
