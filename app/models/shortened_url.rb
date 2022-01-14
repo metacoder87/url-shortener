@@ -13,6 +13,7 @@ class ShortenedUrl < ApplicationRecord
         foreign_key: :shortened_url_id
 
     has_many :visitors,
+        Proc.new { distinct },
         through: :visits,
         source: :visitor
 
