@@ -7,6 +7,15 @@ class ShortenedUrl < ApplicationRecord
         class_name: :User,
         foreign_key: :submitter_id
 
+    has_many :visits,
+        primary_key: :id,
+        class_name: :Visit,
+        foreign_key: :shortened_url_id
+        
+    has_many :visitors,
+        through: :visits,
+        source: :visitor
+
     def self.random_code
         loop do
             rando = SecureRandom.urlsafe_base64(16)
