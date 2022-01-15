@@ -51,3 +51,11 @@ class CLI
         puts "Shortened URL is: #{short.short_url}"
     end
 
+    def run
+        get_email
+        short_url_options
+    end
+
+end
+
+CLI.new.run
