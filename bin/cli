@@ -22,3 +22,12 @@ class CLI
         @user = User.new(email: @email)
         @user.save!
     end
+
+    def shorten_url
+        puts "Enter the URL"
+            long_url = gets.chomp.to_s
+            short = ShortenedUrl.create_shortened_url(@user, long_url)
+            short.save!
+        puts "Shortened URL is: #{short.short_url}"
+    end
+
