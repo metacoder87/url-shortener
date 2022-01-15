@@ -4,3 +4,9 @@ class CLI
         return true if @email.include?('@') && @email.include?('.')
         return false
     end
+
+    def user_exists?
+        @user = User.find_by(email: @email)
+        return true if @user
+        return false
+    end
