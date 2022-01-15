@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 class CLI
+    def get_email
+        puts "Please enter your email"
+        @email = gets.chomp.to_s
+        get_email unless proper_email?
+        register_user unless user_exists?
+    end
+
     def proper_email?
         return true if @email.include?('@') && @email.include?('.')
         return false
