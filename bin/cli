@@ -10,3 +10,8 @@ class CLI
         return true if @user
         return false
     end
+
+    def register_user
+        @user = User.new(email: @email)
+        @user.save!
+    end
