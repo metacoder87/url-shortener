@@ -23,6 +23,16 @@ class CLI
         @user.save!
     end
 
+    def short_url_options
+        puts "Would you like to visit a short URL? y or n"
+        response = gets.chomp.to_s
+        if response == 'y'
+            visit_short_url
+        else puts "Would you like to shorten a URL? y or n"
+            answer = gets.chomp.to_s
+            shorten_url if answer == 'y'
+        end
+    end
 
     def visit_short_url
         puts "Enter the URL"
