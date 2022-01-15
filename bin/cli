@@ -1,2 +1,6 @@
 #!/usr/bin/env ruby
 class CLI
+    def proper_email?
+        return true if @email.include?('@') && @email.include?('.')
+        return false
+    end
