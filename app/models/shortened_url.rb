@@ -70,4 +70,13 @@ class ShortenedUrl < ApplicationRecord
     def num_recent_uniques
         visits.select('user_id').where('created_at > ?', 10.minutes.ago).distinct.count
     end
+
+    def no_spamming
+        prev_minute = ShortenedUrl
+            .where('created_at >= ?', 1.minute.ago)
+            .where(submitter_id: submitter_id).length
+
+        errors[:maximum] << 'limit reached on short urls' if prev_minute >= 5
+    end
+
 end
