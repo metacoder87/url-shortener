@@ -79,4 +79,13 @@ class ShortenedUrl < ApplicationRecord
         errors[:maximum] << 'limit reached on short urls' if prev_minute >= 5
     end
 
+    def nonpremium_max
+        return if User.find(self.submitter_id).premium 
+        
+        number_of_urls = ShortenedUrl
+            .where(submitter_id: submitter_id).length
+
+        errors[:Only] << 'premo members can generate more than five.' if number_of_urls >= 5
+    end
+
 end
